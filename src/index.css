@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gelasio", sans-serif;
+  scroll-behavior: smooth;
+  cursor: none;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: black;
+  color: white;
+}
+
+/* Font */
+.font-chaney {
+  font-family: "CHANEY";
+}
+
+/* Custom Scrollbar */
+
+/* Width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: darkgrey;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+/* Cursor */
+.cursor-dot {
+  width: 15px;
+  height: 15px;
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Moving Background Image */
+.bg-with-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../public/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.05;
+  z-index: -1;
+  animation: backgroundMove 100s linear infinite alternate;
+}
+
+/* Static Background Image */
+.bg-with-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../public/images/statue.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 350px;
+  margin: auto;
+  z-index: -1;
+}
+
+@keyframes backgroundMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
