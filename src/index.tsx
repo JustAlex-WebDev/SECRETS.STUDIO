@@ -1,22 +1,25 @@
+// React and DOM rendering
 import ReactDOM from "react-dom/client";
+
+// Routing
 import { BrowserRouter } from "react-router-dom";
+
+// Main App component
 import App from "./App";
+
+// Global styles
 import "./index.css";
 
-// Get the root element from the HTML document by its ID
+// Find the root element and check if it exists
 const container = document.getElementById("root");
 
-// Check if the root element exists
 if (!container) {
-  throw new Error(
-    "Root element not found. Please ensure there is an element with id 'root' in your HTML."
-  );
+  // Throw an error if the root element is not found
+  throw new Error("Root element not found.");
 }
 
-// Create a root for rendering the React application
+// Create a root and render the application
 const root = ReactDOM.createRoot(container as HTMLElement);
-
-// Render the React application inside the root element
 root.render(
   <BrowserRouter>
     <App />
