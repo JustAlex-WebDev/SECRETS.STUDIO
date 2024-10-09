@@ -5,26 +5,27 @@ const Navigation: React.FC = () => {
   const { mouseOverEvent, mouseOutEvent } = useCursorContext();
 
   return (
-    <div className="w-full max-w-[1024px] flex justify-between items-center p-5">
+    <nav className="w-full h-auto max-w-[1024px] flex justify-between items-center p-5 z-20">
       {/* Logo */}
-      <div
+      <h1
         onMouseOver={mouseOverEvent}
         onMouseOut={mouseOutEvent}
         className="font-chaney text-base tracking-[1px]"
       >
         SECRETS.
-      </div>
+      </h1>
 
       {/* Nav Icon */}
-      <div
+      <button
         onMouseOver={mouseOverEvent}
         onMouseOut={mouseOutEvent}
-        className="flex flex-col justify-center items-center gap-1"
+        className="h-full flex flex-col justify-center items-center gap-1 cursor-none"
+        aria-label="Navigation menu"
       >
-        <div className="w-6 h-1 rounded-sm bg-white"></div>
-        <div className="w-6 h-1 rounded-sm bg-white"></div>
-      </div>
-    </div>
+        <span className="w-6 h-1 rounded-sm bg-white"></span>
+        <span className="w-6 h-1 rounded-sm bg-white"></span>
+      </button>
+    </nav>
   );
 };
 

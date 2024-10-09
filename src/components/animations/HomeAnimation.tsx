@@ -3,16 +3,7 @@ import React from "react";
 
 const HomeAnimation: React.FC = () => {
   return (
-    <m.div
-      initial={{ height: "100%" }}
-      animate={{ height: "0%" }}
-      transition={{
-        duration: 0.375,
-        delay: 1.1,
-        ease: "easeIn",
-      }}
-      className="absolute top-0 left-0 w-full h-full overflow-hidden"
-    >
+    <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
       {/* First animation layer */}
       <m.div
         initial={{ transform: "translateY(0%)" }}
@@ -36,7 +27,7 @@ const HomeAnimation: React.FC = () => {
         }}
         className="absolute top-0 left-0 w-full h-full bg-white z-50"
       ></m.div>
-    </m.div>
+    </div>
   );
 };
 
