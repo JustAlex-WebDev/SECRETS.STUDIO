@@ -12,6 +12,7 @@ import Home from "../pages/Home";
  * @returns {JSX.Element} A component handling the app's route switching with animations.
  */
 const AppRoutes: React.FC = () => {
+  // Get the current route location from React Router
   const location = useLocation();
 
   return (

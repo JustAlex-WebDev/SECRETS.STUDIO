@@ -15,7 +15,7 @@ import { motion as m } from "framer-motion";
 import AppRoutes from "./routes/AppRoutes";
 
 // Lazy-loaded components
-const AnimatedBackground = React.lazy(
+const HomeAnimationBackground = React.lazy(
   () => import("./components/animations/HomeAnimationBackground")
 );
 
@@ -24,37 +24,34 @@ const AnimatedBackground = React.lazy(
  * @returns {JSX.Element} The main structure of the application.
  */
 const App: React.FC = () => (
-  <div>
-    {/* Wrapping the app in necessary providers */}
-    <ContextProviders>
-      {/* Custom cursor component */}
-      <Cursor />
+  <ContextProviders>
+    {/* Custom cursor */}
+    <Cursor />
 
-      {/* Main app container with background animation */}
-      <m.div
-        initial={{ filter: "blur(50px)", opacity: 0 }}
-        animate={{ filter: "blur(0px)", opacity: 1 }}
-        transition={{
-          duration: 1,
-          delay: 0.25,
-          ease: "easeOut",
-        }}
-        className="relative w-full h-screen flex flex-col justify-between items-center bg-with-overlay"
-      >
-        {/* Animated background component (lazy-loaded for performance) */}
-        <AnimatedBackground />
+    {/* Main app container */}
+    <m.div
+      initial={{ filter: "blur(50px)", opacity: 0 }}
+      animate={{ filter: "blur(0px)", opacity: 1 }}
+      transition={{
+        duration: 1,
+        delay: 0.25,
+        ease: "easeOut",
+      }}
+      className="relative w-full h-screen flex flex-col justify-between items-center bg-with-overlay"
+    >
+      {/* Animated background component */}
+      <HomeAnimationBackground />
 
-        {/* Navigation bar for main site navigation */}
-        <Navigation />
+      {/* Main navigation */}
+      <Navigation />
 
-        {/* App's dynamic routing, with animated page transitions */}
-        <AppRoutes />
+      {/* Routing */}
+      <AppRoutes />
 
-        {/* Footer at the bottom of the page */}
-        <Footer />
-      </m.div>
-    </ContextProviders>
-  </div>
+      {/* Footer */}
+      <Footer />
+    </m.div>
+  </ContextProviders>
 );
 
 export default App;

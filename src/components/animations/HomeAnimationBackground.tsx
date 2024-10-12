@@ -1,40 +1,48 @@
-// AnimatedBackground.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 
-const AnimatedBackground = () => {
+/**
+ * Toggles visibility of background elements (paint brush and crown) at intervals.
+ * @returns {JSX.Element} An animated background with timed visibility toggling.
+ */
+const AnimatedBackground: React.FC = () => {
   const [showElement, setShowElement] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  /**
+   * Toggles the visibility of the background elements.
+   */
+  const toggleElement = useCallback(() => {
+    setShowElement(true);
+
+    // Hide the element
+    setTimeout(() => setShowElement(false), 500);
+  }, []);
 
   useEffect(() => {
-    // Function to toggle the display of the element
-    const toggleElement = () => {
-      setShowElement(true);
+    // Toggle the background elements
+    intervalRef.current = setInterval(toggleElement, 4000);
 
-      setTimeout(() => {
-        setShowElement(false); // Hide the element after 0.5 seconds
-      }, 500);
+    // Clean up function
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-
-    const interval = setInterval(toggleElement, 4000);
-
-    // Clean up interval on component unmount
-    return () => clearInterval(interval);
-  }, []);
+  }, [toggleElement]);
 
   return (
     <>
       {showElement && (
         <>
-          {/* Paint Brush Image */}
+          {/* Paint Brush */}
           <div className="absolute inset-0 z-10 overflow-hidden">
             <div className="w-full h-full bg-paint-brush"></div>
           </div>
-
-          {/* Crown Image */}
-          <div className="absolute inset-0 z-10 overflow-hidden">
-            <div className="w-full h-full bg-crown"></div>
-          </div>
         </>
       )}
+
+      {/* Crown */}
+      <div className="absolute inset-0 z-10 overflow-hidden">
+        <div className="w-full h-full bg-crown"></div>
+      </div>
     </>
   );
 };

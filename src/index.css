@@ -1,7 +1,9 @@
+/* Import Tailwind's base styles, component styles, and utility styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Global styles for all elements */
 * {
   margin: 0;
   padding: 0;
@@ -11,45 +13,42 @@
   cursor: none;
 }
 
+/* Set full height for the HTML element */
 html {
   height: -webkit-fill-available;
 }
 
+/* Body styling */
 body {
   overflow-x: hidden;
   background-color: black;
   color: white;
 }
 
-/* Font */
+/* Custom font class for Chaney font */
 .font-chaney {
   font-family: "CHANEY";
 }
 
-/* Custom Scrollbar */
-
-/* Width */
+/* Custom scrollbar styles for WebKit browsers */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: darkgrey;
   border-radius: 10px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: grey;
 }
 
-/* Cursor */
+/* Custom cursor dot styles */
 .cursor-dot {
   width: 15px;
   height: 15px;
@@ -61,7 +60,23 @@ body {
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Moving Background Image */
+/* Highlighted / On Selection Styles */
+::-moz-selection {
+  background: white;
+  color: black;
+}
+
+::-webkit-selection {
+  background: white;
+  color: black;
+}
+
+::selection {
+  background: white;
+  color: black;
+}
+
+/* Background with moving overlay image */
 .bg-with-overlay::before {
   content: "";
   position: absolute;
@@ -70,12 +85,12 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  opacity: 0.125;
+  opacity: 0.15;
   z-index: -1;
   animation: backgroundMove 20s linear infinite alternate;
 }
 
-/* Static Background Image */
+/* Static background image */
 .bg-with-overlay::after {
   content: "";
   position: absolute;
@@ -89,11 +104,15 @@ body {
   z-index: -1;
 }
 
+/* Background elements */
 .bg-paint-brush,
 .bg-crown {
-  background-image: url("../public/images/paintBrush.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.bg-paint-brush {
+  background-image: url("../public/images/paintBrush.png");
   background-position-x: 49.5%;
   background-position-y: 14%;
   animation: skewAndScaleBrush 0.375s infinite alternate;
@@ -103,22 +122,18 @@ body {
   background-image: url("../public/images/crown.png");
   background-position-x: 50%;
   background-position-y: 4%;
-  animation: skewAndScaleCrown 0.5s infinite alternate;
 }
 
 /* Animations */
-
-/* Static Background Image */
 @keyframes backgroundMove {
   0% {
     background-position: 0 0;
   }
   100% {
-    background-position: 100% 0;
+    background-position: 0 100%;
   }
 }
 
-/* Paint Brush Skew and Scale */
 @keyframes skewAndScaleBrush {
   0% {
     transform: skewY(0deg) scale(1);
@@ -134,7 +149,6 @@ body {
   }
 }
 
-/* Crown Skew and Scale */
 @keyframes skewAndScaleCrown {
   0% {
     transform: skewY(0deg) scale(1);
